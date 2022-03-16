@@ -18,8 +18,12 @@ capture () {
         }" \
         https://telemetry.firez.one/capture/ > /dev/null
     fi
+  else
+    echo 'Error: curl required'
+    exit 1
   fi
 }
+
 promptEmail() {
   echo $1
   read adminEmail
@@ -48,7 +52,7 @@ wireguardCheck() {
       echo "Error! WireGuard not detected. Please upgrade your kernel to at least 5.6 or install the WireGuard kernel module."
       echo "See more at https://www.wireguard.com/install/"
     fi
-    exit
+    exit 2
   fi
 }
 
@@ -56,7 +60,7 @@ kernelCheck() {
   major=`uname -r | cut -d'.' -f1`
   if [ "$major" -lt "5" ]; then
     echo "Kernel is not supported `uname -r`"
-    exit
+    exit 3
   fi
 }
 
@@ -111,8 +115,8 @@ mapReleaseToDistro() {
   fi
 
   if [ -z "$image_sub_string" ]; then
-    echo "Unsupported Operating System. Aborting."
-    exit
+    echo "Unsupported platform. Please see the manual install guide at https://docs.firez.one/docs/deploy/server/#manual-install."
+    exit 4
   fi
 
   latest_release=`
