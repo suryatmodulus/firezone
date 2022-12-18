@@ -69,7 +69,7 @@ defmodule FzHttp.MixProject do
       {:ueberauth, "~> 0.7"},
       {:ueberauth_identity, "~> 0.4"},
       {:httpoison, "~> 1.8"},
-      {:argon2_elixir, "~> 2.0"},
+      {:argon2_elixir, "~> 3.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.7"},
