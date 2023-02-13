@@ -36,7 +36,7 @@ jobs:
         with:
           otp-version: '25'
           elixir-version: '1.14'
-      - uses: actions/cache@v3.0.11
+      - uses: actions/cache@v3.2.5
         with:
           path: |
             deps
